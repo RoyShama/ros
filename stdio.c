@@ -1,6 +1,6 @@
 #include "stdio.h"
 
-#define VID_MEM 0xb8000
+#define VID_MEM (char*)0xb8000
 #define test 0
 void some_function(){
 }
