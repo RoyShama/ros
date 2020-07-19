@@ -2,10 +2,11 @@ s-image:kernel.c
 	nasm kernel_entry.asm -f elf -o kernel_entry.o
 	nasm -fbin boot/main.asm -o main.bin
 	rm -rf ./iso
+	gcc -c IO.c -ffreestanding -nostdlib -o IO.o
 	gcc -c stdio.c -ffreestanding -nostdlib -o stdio.o
 	gcc -c kernel.c -ffreestanding -nostdlib -o kernel.o
 	nasm kernel_entry.asm -f elf64 -o kernel_entry.o
-	ld -o kernel.bin -Ttext 0x00007C00  kernel_entry.o kernel.o stdio.o --oformat binary
+	ld -o kernel.bin -Ttext 0x00007C00  kernel_entry.o kernel.o stdio.o IO.o --oformat binary
 	cat main.bin kernel.bin > os-image
 
 clean:
@@ -15,6 +16,8 @@ clean:
 	rm kernel.bin
 	rm kernel_entry.o
 	rm os-image
+	rm stdio.o
+	rm IO.o
 run:
 	qemu-system-x86_64 os-image
 

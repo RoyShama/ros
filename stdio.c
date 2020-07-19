@@ -1,14 +1,14 @@
-#include "stdio.h"
+#include "IO.h"
 
-#define VID_MEM (char*)0xb8000
+#define VID_MEM (unsigned char*)0xb8000
 #define test 0
 void some_function(){
 }
 
 
 void printc(char letter,unsigned int offset){
-	char* video_memory = VID_MEM+offset;
-	*video_memory = letter;
+	unsigned char* video_memory =  VID_MEM + offset;
+	outb(video_memory,letter);
 	some_function();
 }
 
