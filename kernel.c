@@ -1,5 +1,7 @@
 #include "stdio.h"
-void main(void){
-//	char string[] = "hello.";
-	prints("hello world.");
+
+
+void _start(void){
+	char a[]= "hello world";
+	prints(a);
 }

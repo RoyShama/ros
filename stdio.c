@@ -7,8 +7,8 @@ void some_function(){
 
 
 void printc(char letter,unsigned int offset){
-	unsigned char* video_memory =  VID_MEM + offset;
-	outb(video_memory,letter);
+	char* video_memory =  0xb8000 + offset;
+	*video_memory = letter;
 	some_function();
 }
 

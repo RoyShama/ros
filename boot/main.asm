@@ -83,7 +83,7 @@ pop bx
 mov dl, 0x80
 mov al, 3
 mov cl, 3
-mov bx, Kernel
+mov bx, 0x8000
 call readDisk
 
 cli
@@ -155,11 +155,9 @@ times 512-($-$$-512) db 0
 
 Kernel:
 
-mov rax, 0x8f658f4b
-mov [VID_MEM], rax
 
-mov rax, 0x8f6c8f658f6e8f72
-mov [VID_MEM+4], rax
+;mov rax, 0x0000000000008000
+;jmp rax
 
 ;times 4096 db 0
 ;times 5120 db 0
