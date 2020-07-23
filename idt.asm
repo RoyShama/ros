@@ -1,8 +1,8 @@
 [bits 64]
-[extern idt]
+[extern _idt]
 idt_descriptor:
 	dw 4095
-	dq idt
+	dq _idt
 
 
 %macro PUSHALL 0
