@@ -23,6 +23,8 @@ clean:
 	rm stdio.o
 	rm IO.o
 	rm buff.o
+	rm idts.o
+	rm idtc.o
 run:
 	qemu-system-x86_64 os-image
 
